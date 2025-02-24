@@ -1,0 +1,44 @@
+/* Fondo general */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #FFD700, #FFA500); /* De amarillo a naranja */
+}
+
+/* Estilo del título */
+.label-titulo {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 10px;
+}
+
+/* Estilo de la descripción */
+.label-descripcion {
+    -fx-font-size: 16px;
+    -fx-text-fill: #444;
+    -fx-padding: 10px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+
+/* Estilo de los botones */
+.button {
+    -fx-background-color: #4CAF50; /* Verde */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);
+    -fx-cursor: hand;
+}
+
+/* Efecto hover en botones */
+.button:hover {
+    -fx-background-color: #45a049;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Efecto de click */
+.button:pressed {
+    -fx-background-color: #388E3C;
+}

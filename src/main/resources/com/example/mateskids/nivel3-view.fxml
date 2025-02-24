@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox alignment="CENTER"
+      spacing="20.0"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.mateskids.Nivel3Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <!-- Título -->
+    <Label text="¡Nivel 3!"
+           styleClass="label-titulo"/>
+
+    <!-- Botones -->
+    <Label fx:id="boton"/>
+    <Button text="Suma llevando"
+            onAction="#onSuma3ButtonClick"/>
+    <Button text="Resta llevando"
+            onAction="#onResta3ButtonClick"/>
+    <Button text="Multiplicacion"
+            onAction="#onMultiplicacion3ButtonClick"/>
+    <Button text="Division"
+            onAction="#onDivisionButtonClick"/>
+
+    <!-- Botón para regresar a la pantalla principal -->
+    <Button text="Volver al Inicio"
+            fx:id="inicioVolver"
+            onAction="#volverAlInicio"
+            styleClass="button"/>
+</VBox>

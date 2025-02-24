@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox alignment="CENTER"
+      spacing="20.0"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.mateskids.InicioController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+<!-- Título -->
+    <Label text="¡Bienvenido a MateKids!"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+<!-- Descripción -->
+<Label text="Elige tu nivel para empezar a jugar y aprender matemáticas."
+       wrapText="true"
+       style="-fx-font-size: 14px;"/>
+
+
+<!-- Botones -->
+    <Label fx:id="boton"/>
+    <Button fx:id="botonFacil" text="Nivel 1" onAction="#onFacilButtonClick"/>
+    <Button fx:id="botonMedio" text="Nivel 2" onAction="#onMedioButtonClick"/>
+    <Button fx:id="botonDificil" text="Nivel 3" onAction="#onDificilButtonClick"/>
+
+
+</VBox>
