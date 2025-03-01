@@ -14,11 +14,11 @@
     </padding>
 
 <!-- Título -->
-    <Label text="¡Bienvenido a MateKids!"
+    <Label fx:id="titulo" text="¡Bienvenido a MateKids!"
            style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
 <!-- Descripción -->
-<Label text="Elige tu nivel para empezar a jugar y aprender matemáticas."
+<Label fx:id="descripcion" text="Elige tu nivel para empezar a jugar y aprender matemáticas."
        wrapText="true"
        style="-fx-font-size: 14px;"/>
 
@@ -28,6 +28,5 @@
     <Button fx:id="botonFacil" text="Nivel 1" onAction="#onFacilButtonClick"/>
     <Button fx:id="botonMedio" text="Nivel 2" onAction="#onMedioButtonClick"/>
     <Button fx:id="botonDificil" text="Nivel 3" onAction="#onDificilButtonClick"/>
-
 
 </VBox>

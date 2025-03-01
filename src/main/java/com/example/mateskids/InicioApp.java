@@ -12,8 +12,7 @@ public class InicioApp extends Application { //Importante el extends
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(InicioApp.class.getResource("inicio-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        InicioController inicio = new InicioController();
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
 
         stage.setTitle("MatesKids"); //Titulo principal, mas importante.
         stage.setScene(scene);
@@ -21,7 +20,6 @@ public class InicioApp extends Application { //Importante el extends
     }
 
     public static void main(String[] args) {
-
         launch();
     }
 }

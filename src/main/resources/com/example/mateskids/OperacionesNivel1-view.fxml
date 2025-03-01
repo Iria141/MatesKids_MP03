@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.mateskids.OperacionesNivel1">
+
+    <Label fx:id="preguntaLabel" text=" Se muestra el calculo" style="-fx-font-size: 18px;"/>
+
+    <Button fx:id="btnOpcion1" text="Muestra Opción 1" onAction="#verificarRespuesta"/>
+    <Button fx:id="btnOpcion2" text="Muestra Opción 2" onAction="#verificarRespuesta"/>
+    <Button fx:id="btnOpcion3" text="Muestra Opción 3" onAction="#verificarRespuesta"/>
+
+    <Label fx:id="resultadoLabel" text="" style="-fx-font-size: 16px; -fx-text-fill: red;"/>
+
+    <TextField fx:id="respuestaUsuario" promptText="Escribe tu respuesta aquí" />
+
+    <Button fx:id="btnVerificar" text="Verificar" onAction="#verificarRespuestaUsuario" visible="false"/>
+
+    <Button text="Siguiente" onAction="#onSiguienteButtonClick"/>
+
+    <Button text="Volver" onAction="#volver"/>
+</VBox>

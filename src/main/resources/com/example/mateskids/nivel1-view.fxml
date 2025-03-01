@@ -13,20 +13,17 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <!-- Título -->
-    <Label text="¡Nivel 1!"
-           styleClass="label-titulo"/>
+    <!-- Título y descripcion-->
+    <Label text="¡Nivel 1!" styleClass="label-titulo"/>
+    <Label fx:id="descripcion" text="Bienvenido al Nivel 1" />
+
 
     <!-- Botones -->
     <Label fx:id="boton"/>
-    <Button text="Suma"
-            onAction="#onSumaButtonClick"/>
-    <Button text="Resta"
-            onAction="#onRestaButtonClick"/>
+    <Button text="Sumas" onAction="#onSumasButtonClick"/>
+    <Button text="Restas" onAction="#onRestasButtonClick"/>
 
     <!-- Botón para regresar a la pantalla principal -->
-    <Button text="Volver al Inicio"
-             fx:id="inicioVolver"
-            onAction="#volverAlInicio"
-            styleClass="button"/>
+    <Button text="Volver al Inicio" fx:id="inicioVolver" onAction="#volverAlInicio" styleClass="button"/>
+
 </VBox>
