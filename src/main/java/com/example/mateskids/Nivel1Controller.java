@@ -59,5 +59,4 @@ public class Nivel1Controller implements Initializable {
             e.printStackTrace();
         }
     }
-
 }
