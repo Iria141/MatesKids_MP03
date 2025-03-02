@@ -88,7 +88,7 @@ public class OperacionesNivel1 implements Initializable {
                 num1 = num2;
                 num2 = temp;
             }
-
+            respuestaCorrecta = num1 - num2;
             preguntaLabel.setText(num1 + " - " + num2 + " = ?");
         }
     }
