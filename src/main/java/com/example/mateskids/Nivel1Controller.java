@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 
 public class Nivel1Controller implements Initializable {
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // No es necesario inicializar nada porque, las preguntas se generan desde a clase OperacionesNivel1
@@ -48,8 +47,8 @@ public class Nivel1Controller implements Initializable {
             Scene scene = new Scene(fxmlLoader.load(), 700, 500);
 
             // Obtener el controlador de la vista de operaciones y pasar el tipo de operación
-            OperacionesNivel1 controller = fxmlLoader.getController();
-            controller.elegirTipoOperacion(tipoOperacion);
+            OperacionesNivel1 controller1 = fxmlLoader.getController();
+            controller1.elegirTipoOperacion(tipoOperacion);
 
             // Cambiar la escena
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

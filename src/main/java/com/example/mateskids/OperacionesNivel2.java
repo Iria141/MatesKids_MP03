@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -18,10 +19,8 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
-import javafx.scene.control.TextField;
 
-public class OperacionesNivel1 implements Initializable {
-
+public class OperacionesNivel2 implements Initializable {
     public Label respuestaLabel;
     Random random = new Random();
     private int respuestaCorrecta;
@@ -77,20 +76,33 @@ public class OperacionesNivel1 implements Initializable {
         btnOpcion3.setVisible(false);
         btnVerificar.setVisible(true);
 
-        int num1 = random.nextInt(99) + 1;
-        int num2 = random.nextInt(99) + 1;
+        int num1 = random.nextInt(999) + 1;
+        int num2 = random.nextInt(999) + 1;
 
-        if (tipoOperacion.equals("sumas")) {
-            respuestaCorrecta = num1 + num2;
-            preguntaLabel.setText(num1 + " + " + num2 + " = ?");
-        } else {
-            if (num1 < num2) { // Evitar negativos en restas
-                int temp = num1;
-                num1 = num2;
-                num2 = temp;
-            }
-            respuestaCorrecta = num1 - num2;
-            preguntaLabel.setText(num1 + " - " + num2 + " = ?");
+        switch (tipoOperacion) {
+            case "sumas":
+                respuestaCorrecta = num1 + num2;
+                preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
+                break;
+            case "restas":
+                if (num1 < num2) {
+                    int temp = num1;
+                    num1 = num2;
+                    num2 = temp;
+                }
+                respuestaCorrecta = num1 - num2;
+                preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
+                break;
+            case "multiplicaciones":
+                int mul1 = random.nextInt(10) + 1;
+                int mul2 = random.nextInt(10) + 1;
+                respuestaCorrecta = mul1 * mul2;
+                preguntaLabel.setText(mul1 + "\n x " + mul2 + "\n___________\n ?");
+                break;
+            default:
+                respuestaCorrecta = num1 + num2;
+                preguntaLabel.setText(num1 + " + " + num2 + " = ?");
+                break;
         }
     }
 
@@ -102,33 +114,40 @@ public class OperacionesNivel1 implements Initializable {
         btnOpcion3.setVisible(true);
         btnVerificar.setVisible(false);
 
-        int num1 = random.nextInt(99) + 1;
-        int num2 = random.nextInt(99) + 1;
+        int num1 = random.nextInt(900) + 100;
+        int num2 = random.nextInt(900) + 100;
 
-        if (tipoOperacion.equals("sumas")) {
-            respuestaCorrecta = num1 + num2;
-            preguntaLabel.setText(num1 + " + " + num2 + " = ?");
-        } else {
-            if (num1 < num2) { // Evitar negativos en restas
-                int temp = num1;
-                num1 = num2;
-                num2 = temp;
-            }
-            respuestaCorrecta = num1 - num2;
-            preguntaLabel.setText(num1 + " - " + num2 + " = ?");
+        switch (tipoOperacion) {
+
+            case "sumas":
+                respuestaCorrecta = num1 + num2;
+                preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
+                break;
+            case "restas":
+                if (num1 < num2) {
+                    int temp = num1;
+                    num1 = num2;
+                    num2 = temp;
+                }
+                respuestaCorrecta = num1 - num2;
+                preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
+                break;
+            case "multiplicaciones":
+                int mul1 = random.nextInt(10) + 1;
+                int mul2 = random.nextInt(10) + 1;
+                respuestaCorrecta = mul1 * mul2;
+                preguntaLabel.setText(mul1 + "\n x " + mul2 + "\n___________\n ?");
+                break;
         }
+
 
         // Generar respuestas incorrectas
         int opcionCorrecta = random.nextInt(3);
-        int[] opciones = new int[3];
-
-        for (int i = 0; i < 3; i++) {
-            if (i == opcionCorrecta) {
-                opciones[i] = respuestaCorrecta;
-            } else {
-                opciones[i] = generarOpcionesIncorrecta(respuestaCorrecta);
-            }
-        }
+        int[] opciones = IntStream.generate(() -> generarOpcionesIncorrecta(respuestaCorrecta))
+                .distinct()
+                .limit(3)
+                .toArray();
+        opciones[opcionCorrecta] = respuestaCorrecta;
 
         // Asignar respuestas a los botones
         btnOpcion1.setText(String.valueOf(opciones[0]));
@@ -200,23 +219,16 @@ public class OperacionesNivel1 implements Initializable {
 
     @FXML
     protected void onSiguienteButtonClick() {
+
         generarPregunta();
     }
 
     @FXML
     protected void volver(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/mateskids/nivel1-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/mateskids/nivel2-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
 }
-
-
-/*
-bound: se refiere a la vinculación de propiedades (binding), es decir, una propiedad está vinculada a otra y cambia automáticamente.
-Si una propiedad está "bound", no puedes modificarla manualmente sin usar unbind() y Binding se usa para sincronizar valores entre
-UI elements sin necesidad de listeners.
-
- */
