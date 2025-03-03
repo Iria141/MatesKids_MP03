@@ -1,32 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER"
-      spacing="20.0"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.mateskids.InicioController">
+<VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #FFD700, #FFA500, #F08080);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mateskids.InicioController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
 <!-- Título -->
-    <Label fx:id="titulo" text="¡Bienvenido a MateKids!"
-           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Label fx:id="titulo" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #333366;" text="¡Bienvenido a MateKids!">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font></Label>
 
 <!-- Descripción -->
-<Label fx:id="descripcion" text="Elige tu nivel para empezar a jugar y aprender matemáticas."
-       wrapText="true"
-       style="-fx-font-size: 14px;"/>
+<Label fx:id="descripcion" style="-fx-font-size: 18px;" text="Elige tu nivel para empezar a jugar y aprender matemáticas." textFill="#336699" wrapText="true" />
 
 
 <!-- Botones -->
-    <Label fx:id="boton"/>
-    <Button fx:id="botonFacil" text="Nivel 1" onAction="#onFacilButtonClick"/>
-    <Button fx:id="botonMedio" text="Nivel 2" onAction="#onMedioButtonClick"/>
-    <Button fx:id="botonDificil" text="Nivel 3" onAction="#onDificilButtonClick"/>
+    <Label fx:id="boton" />
+    <Button fx:id="botonFacil" onAction="#onFacilButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 20px; -fx-font-size: 16px;" text="Nivel 1">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.9082602262496948" green="0.9342105388641357" blue="0.9125852584838867" />
+            </color>
+         </DropShadow>
+      </effect></Button>
+    <Button fx:id="botonMedio" onAction="#onMedioButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 20px; -fx-font-size: 16px;" text="Nivel 2">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.9082602262496948" green="0.9342105388641357" blue="0.9125852584838867" />
+            </color>
+         </DropShadow>
+      </effect>
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font></Button>
+    <Button fx:id="botonDificil" onAction="#onDificilButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 20px; -fx-font-size: 16px;" text="Nivel 3">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.9082602262496948" green="0.9342105388641357" blue="0.9125852584838867" />
+            </color>
+         </DropShadow>
+      </effect>
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font></Button>
 
 </VBox>

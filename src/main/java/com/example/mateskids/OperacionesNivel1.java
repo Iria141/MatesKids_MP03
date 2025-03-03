@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 
 public class OperacionesNivel1 implements Initializable {
 
+    public Label respuestaLabel;
     Random random = new Random();
     private int respuestaCorrecta;
     private String tipoOperacion = "sumas";
@@ -54,7 +55,7 @@ public class OperacionesNivel1 implements Initializable {
     protected void generarPregunta() {
 
         try{
-            resultadoLabel.setText(""); // Limpiar mensaje anterior
+            resultadoLabel.setText(" "); // Limpiar mensaje anterior
             respuestaUsuario.clear();
             esPreguntaTest = random.nextBoolean(); //  De forma aleatoria se meustra un tipo de pregunta
 
@@ -139,31 +140,46 @@ public class OperacionesNivel1 implements Initializable {
 
     @FXML
     protected void verificarRespuesta(ActionEvent event) {
-        Button btnPresionado = (Button) event.getSource();
-        int respuestaSeleccionada = Integer.parseInt(btnPresionado.getText());
+        try {
 
-        // verifica si la respuesta es correcta
-        Predicate<Integer> esCorrecta = respuesta -> respuesta == respuestaCorrecta;
-        // Aplicar el Predicate
-        resultadoLabel.setText(esCorrecta.test(respuestaSeleccionada) ? "✅ ¡Correcto!" : "❌ Incorrecto, intenta de nuevo.");
+            Button btnPresionado = (Button) event.getSource();
+            int respuestaSeleccionada = Integer.parseInt(btnPresionado.getText());
+
+            // verifica si la respuesta es correcta
+            Predicate<Integer> esCorrecta = respuesta -> respuesta == respuestaCorrecta;
+
+            if (esCorrecta.test(respuestaSeleccionada)) {
+                resultadoLabel.setText("✅ ¡Correcto!");
+                resultadoLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
+            } else {
+                resultadoLabel.setText("❌ Incorrecto, intenta de nuevo.");
+                resultadoLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+            }
+        } catch (Exception e) {
+            e.printStackTrace ();
+        }
     }
 
     @FXML
     protected void verificarRespuestaUsuario() {
-        String entrada = respuestaUsuario.getText().trim();
-
-        if (!entradaValida(entrada)) {
-            resultadoLabel.setText("❌ Introduce numeros positivos.");
-            return;
-        }
-
         try {
+            String entrada = respuestaUsuario.getText().trim();
+
+            if (!entradaValida(entrada)) {
+                resultadoLabel.setText("❌ Introduce numeros positivos.");
+                return;
+            }
+
             int respuestaIngresada = Integer.parseInt(entrada);
 
             if (respuestaIngresada == respuestaCorrecta) {
                 resultadoLabel.setText("✅ ¡Correcto!");
+                resultadoLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
+
             } else {
                 resultadoLabel.setText("❌ Incorrecto, intenta de nuevo.");
+                resultadoLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+
             }
         } catch (NumberFormatException e) {
             resultadoLabel.setText("❌ Error: Ingresa solo números válidos.");
@@ -176,7 +192,6 @@ public class OperacionesNivel1 implements Initializable {
     private boolean entradaValida(String input) {
         return Pattern.matches("-?\\d+", input); //Acepta números enteros
     }
-
 
     private int generarOpcionesIncorrecta(int correcta) {
         return IntStream.generate(() -> random.nextInt(20) +1)//Genera solo números positivos
