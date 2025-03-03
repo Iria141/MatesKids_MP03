@@ -47,6 +47,7 @@ public class Nivel3Controller implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/mateskids/inicio-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm()); // Asegúrate de agregar el CSS
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

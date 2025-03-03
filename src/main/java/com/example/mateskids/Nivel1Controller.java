@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -30,8 +31,10 @@ public class Nivel1Controller implements Initializable {
     @FXML
     protected void volverAlInicio(ActionEvent event) throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/mateskids/inicio-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Parent fxmlLoader = FXMLLoader.load(getClass().getResource("inicio-view.fxml"));
+            Scene scene = new Scene(fxmlLoader, 700, 500);
+
+            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -47,8 +50,8 @@ public class Nivel1Controller implements Initializable {
             Scene scene = new Scene(fxmlLoader.load(), 700, 500);
 
             // Obtener el controlador de la vista de operaciones y pasar el tipo de operación
-            OperacionesNivel1 controller1 = fxmlLoader.getController();
-            controller1.elegirTipoOperacion(tipoOperacion);
+            OperacionesNivel1 controller = fxmlLoader.getController();
+            controller.elegirTipoOperacion(tipoOperacion);
 
             // Cambiar la escena
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

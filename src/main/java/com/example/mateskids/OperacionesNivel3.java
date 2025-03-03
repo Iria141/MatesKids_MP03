@@ -183,10 +183,11 @@ public class OperacionesNivel3 implements Initializable {
 
             if (esCorrecta.test(respuestaSeleccionada)) {
                 resultadoLabel.setText("✅ ¡Correcto!");
-                resultadoLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
-            } else {
+                resultadoLabel.setStyle("label-correcto");
+            }
+            else {
                 resultadoLabel.setText("❌ Incorrecto, intenta de nuevo.");
-                resultadoLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-incorrecto");
             }
         } catch (Exception e) {
             e.printStackTrace ();
