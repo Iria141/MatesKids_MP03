@@ -107,7 +107,7 @@ public class OperacionesNivel1 implements Initializable {
 
         if (tipoOperacion.equals("sumas")) {
             respuestaCorrecta = num1 + num2;
-            preguntaLabel.setText(num1 + " + " + num2 + " = ?");
+            preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
         } else {
             if (num1 < num2) { // Evitar negativos en restas
                 int temp = num1;
@@ -115,7 +115,7 @@ public class OperacionesNivel1 implements Initializable {
                 num2 = temp;
             }
             respuestaCorrecta = num1 - num2;
-            preguntaLabel.setText(num1 + " - " + num2 + " = ?");
+            preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
         }
 
         // Generar respuestas incorrectas
@@ -148,10 +148,9 @@ public class OperacionesNivel1 implements Initializable {
 
             if (esCorrecta.test(respuestaSeleccionada)) {
                 resultadoLabel.setText("✅ ¡Correcto!");
-                resultadoLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
-            } else {
+                resultadoLabel.setStyle("label-correcto");            } else {
                 resultadoLabel.setText("❌ Incorrecto, intenta de nuevo.");
-                resultadoLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-incorrecto\");");
             }
         } catch (Exception e) {
             e.printStackTrace ();
