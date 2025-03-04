@@ -82,7 +82,7 @@ public class OperacionesNivel1 implements Initializable {
 
         if (tipoOperacion.equals("sumas")) {
             respuestaCorrecta = num1 + num2;
-            preguntaLabel.setText(num1 + " + " + num2 + " = ?");
+            preguntaLabel.setText(String.format("%6d\n+ %3d\n________\n    ??", num1, num2));
         } else {
             if (num1 < num2) { // Evitar negativos en restas
                 int temp = num1;
@@ -90,7 +90,7 @@ public class OperacionesNivel1 implements Initializable {
                 num2 = temp;
             }
             respuestaCorrecta = num1 - num2;
-            preguntaLabel.setText(num1 + " - " + num2 + " = ?");
+            preguntaLabel.setText(String.format("%6d\n- %3d\n________\n    ??", num1, num2));
         }
     }
 
@@ -107,7 +107,7 @@ public class OperacionesNivel1 implements Initializable {
 
         if (tipoOperacion.equals("sumas")) {
             respuestaCorrecta = num1 + num2;
-            preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
+            preguntaLabel.setText(String.format("%6d\n+ %3d\n________\n    ??", num1, num2));
         } else {
             if (num1 < num2) { // Evitar negativos en restas
                 int temp = num1;
@@ -115,7 +115,7 @@ public class OperacionesNivel1 implements Initializable {
                 num2 = temp;
             }
             respuestaCorrecta = num1 - num2;
-            preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
+            preguntaLabel.setText(String.format("%6d\n- %3d\n________\n    ??", num1, num2));
         }
 
         // Generar respuestas incorrectas
@@ -171,11 +171,11 @@ public class OperacionesNivel1 implements Initializable {
 
             if (respuestaIngresada == respuestaCorrecta) {
                 resultadoLabel.setText("✅ ¡Correcto!");
-                resultadoLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-correcto");
 
             } else {
                 resultadoLabel.setText("❌ Incorrecto, intenta de nuevo.");
-                resultadoLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-incorrecto");
 
             }
         } catch (NumberFormatException e) {

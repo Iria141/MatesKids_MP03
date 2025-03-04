@@ -82,7 +82,7 @@ public class OperacionesNivel2 implements Initializable {
         switch (tipoOperacion) {
             case "sumas":
                 respuestaCorrecta = num1 + num2;
-                preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n+ %2d\n________\n    ??", num1, num2));
                 break;
             case "restas":
                 if (num1 < num2) {
@@ -91,17 +91,17 @@ public class OperacionesNivel2 implements Initializable {
                     num2 = temp;
                 }
                 respuestaCorrecta = num1 - num2;
-                preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n- %2d\n________\n    ??", num1, num2));
                 break;
             case "multiplicaciones":
                 int mul1 = random.nextInt(10) + 1;
                 int mul2 = random.nextInt(10) + 1;
                 respuestaCorrecta = mul1 * mul2;
-                preguntaLabel.setText(mul1 + "\n x " + mul2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%4d\nx %d\n________\n    ??", mul1, mul2));
                 break;
             default:
                 respuestaCorrecta = num1 + num2;
-                preguntaLabel.setText(num1 + " + " + num2 + " = ?");
+                preguntaLabel.setText(String.format("%d\n+ %2d\n________\n    ??", num1, num2));
                 break;
         }
     }
@@ -118,10 +118,9 @@ public class OperacionesNivel2 implements Initializable {
         int num2 = random.nextInt(900) + 100;
 
         switch (tipoOperacion) {
-
             case "sumas":
                 respuestaCorrecta = num1 + num2;
-                preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n+ %2d\n________\n    ??", num1, num2));
                 break;
             case "restas":
                 if (num1 < num2) {
@@ -130,13 +129,17 @@ public class OperacionesNivel2 implements Initializable {
                     num2 = temp;
                 }
                 respuestaCorrecta = num1 - num2;
-                preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n- %2d\n________\n    ??", num1, num2));
                 break;
             case "multiplicaciones":
                 int mul1 = random.nextInt(10) + 1;
                 int mul2 = random.nextInt(10) + 1;
                 respuestaCorrecta = mul1 * mul2;
-                preguntaLabel.setText(mul1 + "\n x " + mul2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%4d\nx %d\n________\n    ??", mul1, mul2));
+                break;
+            default:
+                respuestaCorrecta = num1 + num2;
+                preguntaLabel.setText(String.format("%2d\n+ %d\n________\n    ??", num1, num2));
                 break;
         }
 
@@ -190,11 +193,11 @@ public class OperacionesNivel2 implements Initializable {
 
             if (respuestaIngresada == respuestaCorrecta) {
                 resultadoLabel.setText("✅ ¡Correcto!");
-                resultadoLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-correcto");
 
             } else {
                 resultadoLabel.setText("❌ Incorrecto, intenta de nuevo.");
-                resultadoLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-incorrecto");
 
             }
         } catch (NumberFormatException e) {
@@ -210,7 +213,7 @@ public class OperacionesNivel2 implements Initializable {
     }
 
     private int generarOpcionesIncorrecta(int correcta) {
-        return IntStream.generate(() -> random.nextInt(20) +1)//Genera solo números positivos
+        return IntStream.generate(() -> random.nextInt(900) + 100)//Genera solo números positivos
                 .filter(num -> num != correcta)// asegura de que la opción incorrecta no sea igual a la correcta
                 .findFirst()
                 .orElse(correcta); //devuelve la correcta, n el caso extremo en que no se encuentre otro número

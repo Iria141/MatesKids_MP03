@@ -82,7 +82,7 @@ public class OperacionesNivel3 implements Initializable {
         switch (tipoOperacion) {
             case "sumas":
                 respuestaCorrecta = num1 + num2;
-                preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n+ %d\n________\n       ??", num1, num2));
                 break;
             case "restas":
                 if (num1 < num2) {
@@ -91,23 +91,23 @@ public class OperacionesNivel3 implements Initializable {
                     num2 = temp;
                 }
                 respuestaCorrecta = num1 - num2;
-                preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n- %d\n_____________\n       ??", num1, num2));
                 break;
             case "multiplicaciones":
                 int mul1 = random.nextInt(999) + 1;
                 int mul2 = random.nextInt(999) + 1;
                 respuestaCorrecta = mul1 * mul2;
-                preguntaLabel.setText(mul1 + "\n x " + mul2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\nx %d\n_____________\n       ??", num1, num2));
                 break;
             case "divisiones":
                 int div1 = random.nextInt(999) + 1;
                 int div2 = random.nextInt(9) + 1; //Solo divisor de un digito
                 respuestaCorrecta = div1 / div2;
-                preguntaLabel.setText(div1 + " |_" + div2 + "_\n ?");
+                preguntaLabel.setText(String.format("%4d | %2d\n       ?\n", div1, div2));
                 break;
             default:
                 respuestaCorrecta = num1 + num2;
-                preguntaLabel.setText(num1 + " + " + num2 + " = ?");
+                preguntaLabel.setText(String.format("%d\n+ %d\n_____________\n       ??", num1, num2));
                 break;
         }
     }
@@ -127,7 +127,7 @@ public class OperacionesNivel3 implements Initializable {
 
             case "sumas":
                 respuestaCorrecta = num1 + num2;
-                preguntaLabel.setText(num1 + "\n + " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n+ %d\n_____________\n       ??", num1, num2));
                 break;
             case "restas":
                 if (num1 < num2) {
@@ -136,23 +136,23 @@ public class OperacionesNivel3 implements Initializable {
                     num2 = temp;
                 }
                 respuestaCorrecta = num1 - num2;
-                preguntaLabel.setText(num1 + "\n - " + num2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\n- %d\n_____________\n       ??", num1, num2));
                 break;
             case "multiplicaciones":
                 int mul1 = random.nextInt(99) + 1;
                 int mul2 = random.nextInt(10) + 1;
                 respuestaCorrecta = mul1 * mul2;
-                preguntaLabel.setText(mul1 + "\n x " + mul2 + "\n___________\n ?");
+                preguntaLabel.setText(String.format("%d\nx %d\n_____________\n       ??", num1, num2));
                 break;
             case "divisiones":
                 int div1 = random.nextInt(100) + 1;
                 int div2 = random.nextInt(9) + 1; //Solo divisor de un digito
                 respuestaCorrecta = div1 / div2;
-                preguntaLabel.setText(div1 + " |_" + div2 + "_\n ?");
+                preguntaLabel.setText(String.format("%4d | %2d\n       ?\n", div1, div2));
                 break;
             default:
                 respuestaCorrecta = num1 + num2;
-                preguntaLabel.setText(num1 + " + " + num2 + " = ?");
+                preguntaLabel.setText(String.format("%d\n+ %d\n_____________\n       ??", num1, num2));
                 break;
         }
 
@@ -208,11 +208,11 @@ public class OperacionesNivel3 implements Initializable {
 
             if (respuestaIngresada == respuestaCorrecta) {
                 resultadoLabel.setText("✅ ¡Correcto!");
-                resultadoLabel.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-correcto");
 
             } else {
                 resultadoLabel.setText("❌ Incorrecto, intenta de nuevo.");
-                resultadoLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                resultadoLabel.setStyle("label-incorrecto");
 
             }
         } catch (NumberFormatException e) {
@@ -228,7 +228,7 @@ public class OperacionesNivel3 implements Initializable {
     }
 
     private int generarOpcionesIncorrecta(int correcta) {
-        return IntStream.generate(() -> random.nextInt(20) +1)//Genera solo números positivos
+        return IntStream.generate(() -> random.nextInt(999999999) +1)//Genera solo números positivos
                 .filter(num -> num != correcta)// asegura de que la opción incorrecta no sea igual a la correcta
                 .findFirst()
                 .orElse(correcta); //devuelve la correcta, n el caso extremo en que no se encuentre otro número
